@@ -6,6 +6,57 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Character {
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  name       String
+  status     String
+  species    String?
+  gender     String
+  hair       String
+  origin     String
+  abilities  String[]
+  alias      String[]
+  image      String
+  episodes   Episode[]
+  location   Location? @relation(fields: [locationId], references: [id])
+  locationId String?
+  quotes     Quote[]
+}
+
+model Episode {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  name       String
+  airDate    DateTime
+  director   String
+  writer     String
+  characters Character[]
+  image      String
+}
+
+model Location {
+  id               String      @id @default(cuid())
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  name             String
+  type             String
+  inhabitants      String[]
+  notableResidents Character[]
+  image            String
+}
+
+model Quote {
+  id          String    @id @default(cuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  quote       String
+  character   Character @relation(fields: [characterId], references: [id])
+  characterId String
 }
