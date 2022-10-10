@@ -7,6 +7,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react';
+import { Nav } from './components';
 import styles from './tailwind.css';
 
 export const meta: MetaFunction = () => ({
@@ -19,16 +20,30 @@ export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
 export default function App() {
 	return (
+		<Document>
+			<Outlet />
+		</Document>
+	);
+}
+
+function Document({
+	children,
+	title = 'Final Space',
+}: React.PropsWithChildren<{ title?: string }>) {
+	return (
 		<html lang="en">
 			<head>
-				<Meta />
+				<meta charSet="utf-8" />
+				<title>{title}</title>
 				<Links />
+				<Meta />
 			</head>
-			<body>
-				<Outlet />
-				<ScrollRestoration />
-				<Scripts />
+			<body className="bg-zinc-200 text-zinc-800 dark:bg-slate-800 dark:text-slate-200 p-8">
+				<Nav />
+				{children}
 				<LiveReload />
+				<Scripts />
+				<ScrollRestoration />
 			</body>
 		</html>
 	);
