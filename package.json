@@ -10,7 +10,9 @@
 		"dev:remix": "remix dev",
 		"generate:css": "npx tailwindcss -o ./app/tailwind.css",
 		"start": "remix-serve build",
-		"deploy": "fly deploy --remote-only"
+		"deploy": "fly deploy --remote-only",
+		"test": "vitest",
+		"coverage": "vitest --coverage"
 	},
 	"dependencies": {
 		"@prisma/client": "^4.4.0",
@@ -25,15 +27,27 @@
 	"devDependencies": {
 		"@remix-run/dev": "^1.7.2",
 		"@remix-run/eslint-config": "^1.7.2",
+		"@testing-library/dom": "^8.19.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^14.4.3",
+		"@types/jest-axe": "^3.5.5",
 		"@types/react": "^18.0.15",
 		"@types/react-dom": "^18.0.6",
+		"@vitejs/plugin-react": "^2.1.0",
+		"@vitest/coverage-c8": "^0.24.0",
 		"esbuild-register": "^3.3.3",
 		"eslint": "^8.23.1",
+		"jest-axe": "^6.0.0",
+		"jsdom": "^20.0.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.7.1",
 		"prisma": "^4.4.0",
 		"tailwindcss": "^3.1.8",
-		"typescript": "^4.7.4"
+		"typescript": "^4.7.4",
+		"vite": "^3.1.6",
+		"vite-tsconfig-paths": "^3.5.1",
+		"vitest": "^0.24.0"
 	},
 	"engines": {
 		"node": ">=17.5"
