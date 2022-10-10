@@ -1,5 +1,5 @@
 import { db } from '~/utils/db.server';
-import { exclude } from './utils';
+import { getAllLocations } from './location';
 
 export async function getAllCharacters() {
 	const characters = await db.character.findMany({ orderBy: { id: 'asc' } });
@@ -7,7 +7,7 @@ export async function getAllCharacters() {
 }
 
 export async function getCharacterById(id: string) {
-	return db.character.findUnique({
+	const character = await db.character.findUnique({
 		where: { id },
 		include: {
 			quotes: {
@@ -16,4 +16,12 @@ export async function getCharacterById(id: string) {
 			},
 		},
 	});
+	if (!character) {
+		return null;
+	}
+	const locations = await getAllLocations();
+	const locationMatch = locations.find(
+		(location) => location.name === character?.origin
+	);
+	return { ...character, originId: locationMatch?.id };
 }

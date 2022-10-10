@@ -9,7 +9,7 @@ export async function getLocationById(id: string) {
 		where: { id },
 		include: {
 			notableResidents: {
-				select: { id: true, name: true },
+				select: { id: true, name: true, image: true },
 				orderBy: { id: 'asc' },
 			},
 		},

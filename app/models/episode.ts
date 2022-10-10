@@ -9,7 +9,7 @@ export async function getEpisodeById(id: string) {
 		where: { id },
 		include: {
 			characters: {
-				select: { id: true, name: true },
+				select: { id: true, name: true, image: true },
 				orderBy: { id: 'asc' },
 			},
 		},

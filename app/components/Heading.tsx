@@ -14,7 +14,7 @@ type JSXHeadingElements = Extract<
 const classMap: Record<number, string> = {
 	1: 'text-5xl mb-8',
 	2: 'text-4xl mb-4',
-	3: 'text-3xl',
+	3: 'text-3xl mb-2',
 	4: 'text-2xl',
 	5: 'text-xl',
 };

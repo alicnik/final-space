@@ -1,7 +1,6 @@
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { Heading } from '~/components';
-import { Carousel } from '~/components/Carousel';
+import { Heading, Carousel } from '~/components';
 import { getAllEpisodes, getAllLocations } from '~/models';
 import { getAllCharacters } from '~/models/character';
 
@@ -18,7 +17,7 @@ export default function Index() {
 	let { characters, episodes, locations } = useLoaderData<typeof loader>();
 
 	return (
-		<main style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+		<main>
 			<Heading level={1}>Welcome to Final Space</Heading>
 			<section className="mb-8">
 				<Heading level={2}>Characters</Heading>

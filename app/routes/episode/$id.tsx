@@ -2,7 +2,7 @@ import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import invariant from 'tiny-invariant';
-import { Heading } from '~/components';
+import { Carousel, Heading, Image } from '~/components';
 import { getEpisodeById } from '~/models';
 
 export const loader = async ({ params }: LoaderArgs) => {
@@ -16,13 +16,22 @@ export default function EpisodeRoute() {
 	const { episode } = useLoaderData<typeof loader>();
 
 	return (
-		<>
-			<Heading level={1}>{episode?.name}</Heading>
-			{episode?.characters.map((character) => (
-				<Link key={character.id} to={`/character/${character.id}`}>
-					{character.name}
-				</Link>
-			))}
-		</>
+		<main>
+			<article>
+				<Heading level={1}>{episode?.name}</Heading>
+				<Image src={episode?.image} alt={episode?.name} />
+				<div className="my-4">
+					<p>Writer: {episode?.writer}</p>
+					<p>Director: {episode?.director}</p>
+					<p>Aired: {new Date(episode?.airDate || '').toLocaleDateString()}</p>
+				</div>
+				<Heading level={3}>Characters</Heading>
+				<Carousel
+					items={episode?.characters}
+					height="h-48"
+					urlPrefix="/character"
+				/>
+			</article>
+		</main>
 	);
 }

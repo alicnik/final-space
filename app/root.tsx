@@ -38,7 +38,7 @@ function Document({
 				<Links />
 				<Meta />
 			</head>
-			<body className="bg-zinc-200 text-zinc-800 dark:bg-slate-800 dark:text-slate-200 p-8">
+			<body className="bg-zinc-200 leading-relaxed text-zinc-800 dark:bg-slate-800 dark:text-slate-200 p-8">
 				<Nav />
 				{children}
 				<LiveReload />
