@@ -1,8 +1,7 @@
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { Heading, Carousel } from '~/components';
-import { getAllEpisodes, getAllLocations } from '~/models';
-import { getAllCharacters } from '~/models/character';
+import { getAllEpisodes, getAllLocations, getAllCharacters } from '~/models';
 
 export const loader = async () => {
 	const [characters, episodes, locations] = await Promise.all([
