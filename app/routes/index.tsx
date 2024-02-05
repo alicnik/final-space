@@ -13,7 +13,7 @@ export const loader = async () => {
 };
 
 export default function Index() {
-	let { characters, episodes, locations } = useLoaderData<typeof loader>();
+	const { characters, episodes, locations } = useLoaderData<typeof loader>();
 
 	return (
 		<main>

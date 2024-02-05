@@ -1,6 +1,6 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import invariant from 'tiny-invariant';
 import { Carousel, Heading, Image } from '~/components';
 import { getLocationById } from '~/models';
@@ -14,7 +14,7 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 export default function LocationRoute() {
 	const { location } = useLoaderData<typeof loader>();
-	console.log(location);
+
 	return (
 		<main>
 			<article>

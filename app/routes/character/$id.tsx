@@ -14,7 +14,7 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 export default function CharacterRoute() {
 	const { character } = useLoaderData<typeof loader>();
-	console.log(character);
+
 	return (
 		<main>
 			<article>
