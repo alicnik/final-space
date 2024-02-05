@@ -57,6 +57,6 @@ model Quote {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   quote       String
-  character   Character @relation(fields: [characterId], references: [id])
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
   characterId String
 }
