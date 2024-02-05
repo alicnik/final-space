@@ -22,14 +22,20 @@ export default function LocationRoute() {
 				<Image src={location?.image} alt={location?.name} />
 				<div className="my-4">
 					<p>Type: {location?.type}</p>
-					<p>Inhabitants: {location?.inhabitants.join(', ')}</p>
+					{location?.inhabitants?.length ? (
+						<p>Inhabitants: {location?.inhabitants.join(', ')}</p>
+					) : null}
 				</div>
-				<Heading level={3}>Notable Residents</Heading>
-				<Carousel
-					items={location?.notableResidents}
-					height="h-48"
-					urlPrefix="/character"
-				/>
+				{location?.notableResidents?.length ? (
+					<>
+						<Heading level={3}>Notable Residents</Heading>
+						<Carousel
+							items={location?.notableResidents}
+							height="h-48"
+							urlPrefix="/character"
+						/>
+					</>
+				) : null}
 			</article>
 		</main>
 	);

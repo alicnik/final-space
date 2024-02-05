@@ -37,12 +37,16 @@ export default function CharacterRoute() {
 						)}
 					</p>
 				</div>
-				<Heading level={3}>Quotes</Heading>
-				{character?.quotes.map(({ id, quote }) => (
-					<li key={id} className="italic">
-						"{quote}"
-					</li>
-				))}
+				{character?.quotes?.length ? (
+					<>
+						<Heading level={3}>Quotes</Heading>
+						{character?.quotes.map(({ id, quote }) => (
+							<li key={id} className="italic">
+								"{quote}"
+							</li>
+						))}
+					</>
+				) : null}
 			</article>
 		</main>
 	);
